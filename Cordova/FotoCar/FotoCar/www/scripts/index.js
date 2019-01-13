@@ -7,6 +7,7 @@
 
     document.addEventListener( 'deviceready', onDeviceReady.bind( this ), false );
     var consoleLog = document.getElementById("consoleLog");
+    var fileSYstem;
 
     function onDeviceReady() {
         // Handle the Cordova pause and resume events
@@ -37,8 +38,7 @@
 
     function cameraSuccess(imageData) {
         consoleLog.innerHTML = imageData;
-        var image = document.getElementById('image');
-        image.src = imageData;
+       
         movePic(imageData);
 
     }
@@ -51,11 +51,12 @@
         var d = new Date();
         var n = d.getTime();
         //new file name
-        var newFileName = n + ".jpg";
-        var myFolderApp = "WINTMP1243";
+        var newFileName = "newPersistentFile.jpg";
+        var myFolderApp = "WINTMP12435";
 
         window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fileSys) {
                 //The folder is created if doesn't exist
+                fileSYstem = fileSys;
                 fileSys.root.getDirectory(myFolderApp,
                     { create: true, exclusive: false },
                     function (directory) {
@@ -69,7 +70,14 @@
     //Callback function when the file has been moved successfully - inserting the complete path
     function successMove(entry) {
         consoleLog.innerHTML = "działa";
-        //I do my insert with "entry.fullPath" as for the path
+        fileSYstem.root.getFile("newPersistentFile.jpg",
+            { create: true, exclusive: false },
+            function(fileEntry) {
+                //I do my insert with "entry.fullPath" as for the path}
+                var image = document.getElementById('image');
+                image.src = fileEntry.toURL();
+                
+            });
     }
 
     function resOnError(error) {
