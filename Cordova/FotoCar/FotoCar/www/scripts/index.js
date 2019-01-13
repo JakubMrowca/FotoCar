@@ -52,7 +52,7 @@
         var n = d.getTime();
         //new file name
         var newFileName = n + ".jpg";
-        var myFolderApp = "WINTMP123";
+        var myFolderApp = "WINTMP1243";
 
         window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fileSys) {
                 //The folder is created if doesn't exist
@@ -68,12 +68,12 @@
 
     //Callback function when the file has been moved successfully - inserting the complete path
     function successMove(entry) {
-        consoleLog.innerHTML = entry;
+        consoleLog.innerHTML = "działa";
         //I do my insert with "entry.fullPath" as for the path
     }
 
     function resOnError(error) {
-        consoleLog.innerHTML=error;
+        consoleLog.innerHTML="nie działa";
     }
     function cameraError(parameters) {
         consoleLog.innerHTML = parameters;
