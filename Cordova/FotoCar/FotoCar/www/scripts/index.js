@@ -23,7 +23,9 @@
         var search = document.getElementById("search");
         foto.addEventListener("click", function () {
 
-            navigator.camera.getPicture(cameraSuccess, cameraError, { cameraOptions });
+            navigator.camera.getPicture(cameraSuccess, cameraError, {
+                quality: 50,
+                destinationType: Camera.DestinationType.FILE_URI });
         });
 
         search.addEventListener("click", function () {
