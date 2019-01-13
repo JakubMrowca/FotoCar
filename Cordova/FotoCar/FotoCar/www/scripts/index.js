@@ -25,6 +25,7 @@
 
             navigator.camera.getPicture(cameraSuccess, cameraError, {
                 quality: 50,
+                saveToPhotoAlbum: true,
                 destinationType: Camera.DestinationType.FILE_URI });
         });
 
@@ -36,7 +37,7 @@
     function cameraSuccess(imageData) {
         consoleLog.innerHTML = imageData;
         var image = document.getElementById('image');
-        image.src = "data:image/jpeg;base64," + imageData;
+        image.src = imageData;
     }
     function cameraError(parameters) {
         consoleLog.innerHTML = parameters;
