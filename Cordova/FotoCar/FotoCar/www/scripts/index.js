@@ -54,7 +54,7 @@
         var newFileName = "newPersistentFile.jpg";
         var myFolderApp = "WINTMP12435";
 
-        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fileSys) {
+        window.requestFileSystem(cordova.file.dataDirectory, 0, function (fileSys) {
                 //The folder is created if doesn't exist
                 fileSYstem = fileSys;
                 fileSys.root.getDirectory(myFolderApp,
@@ -75,7 +75,7 @@
             function(fileEntry) {
                 //I do my insert with "entry.fullPath" as for the path}
                 var image = document.getElementById('image');
-                image.src = fileEntry.toURL();          
+                image.src = fileEntry.toURL();         
             });
     }
 
