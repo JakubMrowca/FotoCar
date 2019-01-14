@@ -70,13 +70,12 @@
     //Callback function when the file has been moved successfully - inserting the complete path
     function successMove(entry) {
         consoleLog.innerHTML = "działa";
-        fileSYstem.root.getFile("newPersistentFile.jpg",
+        fileSYstem.root.getFile("WINTMP12435/newPersistentFile.jpg",
             { create: true, exclusive: false },
             function(fileEntry) {
                 //I do my insert with "entry.fullPath" as for the path}
                 var image = document.getElementById('image');
-                image.src = fileEntry.toURL();
-                
+                image.src = fileEntry.toURL();          
             });
     }
 
